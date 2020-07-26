@@ -1,0 +1,68 @@
+'''
+============HORIZON TABLE SETTINGS (QUERY PARAMETERS)
+   1.	Astrometric RA & DEC
+   2.	Apparent RA & DEC
+   3.	Rates; RA & DEC
+   4.	Apparent AZ & EL
+   5.	Rates; AZ & EL
+   6.	Satellite X & Y, pos. angle
+   7.	Local apparent sidereal time
+   8.	Airmass & extinction
+   9.	Visual mag. & Surface Brght
+  10.	Illuminated fraction
+  11.	Defect of illumination
+  12.	Satellite angular separ/vis.
+  13.	Target angular diameter
+  14.	Observer sub-lon & sub-lat
+  15.	Sun sub-longitude & sub-latitude
+  16.	Sub-Sun position angle & distance
+  17.	North Pole position angle & distance
+  18.	Heliocentric ecliptic lon. & lat.
+  19.	Heliocentric range & range-rate
+  20.	Observer range & range-rate
+  21.	One-way (down-leg) light-time
+  22.	Speed wrt Sun & observer
+  23.	Sun-Observer-Target ELONG angle
+  24.	Sun-Target-Observer ~PHASE angle
+  25.	Target-Observer-Moon angle
+  26.	Observer-Primary-Target angle
+  27.	Sun-Target radial & -vel pos. angle
+  28.	Orbit plane angle
+  29.	Constellation ID
+  30.	Delta-T (TDB - UT)
+  31.	Observer ecliptic lon. & lat.
+  32.	North pole RA & DEC
+  33.	Galactic longitude & latitude
+  34.	Local apparent SOLAR time
+  35.	Earth->obs. site light-time
+  36.	RA & DEC uncertainty
+  37.	Plane-of-sky error ellipse
+  38.	POS uncertainty (RSS)
+  39.	Range & range-rate 3-sigmas
+  40.	Doppler & delay 3-sigmas
+  41.	True anomaly angle
+  42.	Local apparent hour angle
+  43.	PHASE angle & bisector
+  44.	Apparent longitude Sun (L_s)
+  45.	Inertial apparent RA & DEC
+  46.	Rate: Inertial RA & DEC
+===========================================
+'''
+
+# available query parameters for astroquery.jplhorizons.Horizons
+        names = ('targetname', 'datetime_str', 'datetime_jd', 'H', 'G', 'solar_presence', 'flags', 'RA', 'DEC',
+                 'RA_app', 'DEC_app', 'RA_rate', 'DEC_rate', 'AZ', 'EL', 'AZ_rate', 'EL_rate', 'sat_X', 'sat_Y',
+                 'sat_PANG', 'siderealtime', 'airmass', 'magextinct', 'V', 'surfbright', 'illumination', 'illum_defect',
+                 'sat_sep', 'sat_vis', 'ang_width', 'PDObsLon', 'PDObsLat', 'PDSunLon', 'PDSunLat', 'SubSol_ang',
+                 'SubSol_dist',
+                 'NPole_ang', 'NPole_dist', 'EclLon', 'EclLat', 'r', 'r_rate', 'delta', 'delta_rate', 'lighttime',
+                 'vel_sun', 'vel_obs',
+                 'elong', 'elongFlag', 'alpha', 'lunar_elong', 'lunar_illum', 'sat_alpha', 'sunTargetPA', 'velocityPA',
+                 'OrbPlaneAng',
+                 'constellation', 'TDB-UT', 'ObsEclLon', 'ObsEclLat', 'NPole_RA', 'NPole_DEC', 'GlxLon', 'GlxLat',
+                 'solartime',
+                 'earth_lighttime', 'RA_3sigma', 'DEC_3sigma', 'SMAA_3sigma', 'SMIA_3sigma', 'Theta_3sigma',
+                 'Area_3sigma',
+                 'RSS_3sigma', 'r_3sigma', 'r_rate_3sigma', 'SBand_3sigma', 'XBand_3sigma', 'DoppDelay_3sigma',
+                 'true_anom',
+                 'hour_angle', 'alpha_true', 'PABLon', 'PABLat')

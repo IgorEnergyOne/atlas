@@ -1,0 +1,199 @@
+format atlas 3.
+********************************************************************************
+********************************************************************************
+REFERENCE.....: Harris et al. (1992)
+DETECTOR......: photoelectric
+AQUISITION....: Digital data from Alan Harris, converted by PM
+COLUMNS.......: #V.
+REDUCED MAG...: T
+LT CORRECTED..: T
+UNIT OF TIME..: 1.0 day
+OBJECT........:    57 Mnemosyne
+OBSERVING SITE: W117.68 +34.38  Table Mountain Observatory, California, USA
+ASPECT SYSTEM.: 1950.0 ecliptic
+ASPECT EPOCH..: 2444784.5  (1981 Jun 29.0)
+ASPECT DATA...:  3.4475  2.4913   6.76 263.94  19.91
+EARTH POS-VEL.:   0.119209  -1.009635  -0.000023    0.016804  0.001957  0.000000
+OBJECT POS-VEL:  -0.127943  -3.339038   0.848362    0.008777  0.000453  0.000657
+OBSERVING TIME: 2444784.5      (1981 Jun 29)
+ZERO TIME.....:       0.0      (Julian zero)
+DATA:
+  2444784.71507     7.557 .013   1.9  .009
+  2444784.82909     7.544 .013   1.3 -.008
+  2444784.85924     7.515 .013   1.1 -.013
+  2444784.87346     7.525 .013   1.9 -.021
+  2444784.89224     7.525 .013   2.5 -.034
+  2444784.90979     7.524 .014   2.2 -.046
+  2444784.92278     7.524 .014   1.5 -.050
+  2444784.93125     7.562 .016   1.9 -.067
+  2444784.93900     7.546 .016   2.1 -.087
+  2444784.94824     7.577 .017   3.0 -.135
+================----------------------------------------------------------------
+REFERENCE.....: Harris et al. (1992)
+DETECTOR......: photoelectric
+AQUISITION....: Digital data from Alan Harris, converted by PM
+COLUMNS.......: #V.
+REDUCED MAG...: T
+LT CORRECTED..: T
+UNIT OF TIME..: 1.0 day
+OBJECT........:    57 Mnemosyne
+OBSERVING SITE: W117.68 +34.38  Table Mountain Observatory, California, USA
+ASPECT SYSTEM.: 1950.0 ecliptic
+ASPECT EPOCH..: 2444785.5  (1981 Jun 30.0)
+ASPECT DATA...:  3.4469  2.4939   6.93 263.75  19.90
+EARTH POS-VEL.:   0.135996  -1.007536  -0.000023    0.016768  0.002241  0.000000
+OBJECT POS-VEL:  -0.119165  -3.338573   0.849016    0.008778  0.000477  0.000651
+OBSERVING TIME: 2444785.5      (1981 Jun 30)
+ZERO TIME.....:       0.0      (Julian zero)
+DATA:
+! 2444785.67522     7.540 .014   1.2  .013
+  2444785.71177     7.557 .013   1.2  .005
+  2444785.74513     7.562 .013    .4  .002
+  2444785.78677     7.597 .014   5.0 -.005
+  2444785.84356     7.562 .013   1.3 -.009
+! 2444785.87176     7.349 .013   2.6 -.022
+! 2444785.90159     7.364 .013   1.8 -.031
+  2444785.92723     7.503 .016   3.9 -.089
+  2444785.94548     7.531 .018   2.4 -.100
+================----------------------------------------------------------------
+REFERENCE.....: Harris et al. (1992)
+DETECTOR......: photoelectric
+AQUISITION....: Digital data from Alan Harris, converted by PM
+COLUMNS.......: #V.
+REDUCED MAG...: T
+LT CORRECTED..: T
+UNIT OF TIME..: 1.0 day
+OBJECT........:    57 Mnemosyne
+OBSERVING SITE: W117.68 +34.38  Table Mountain Observatory, California, USA
+ASPECT SYSTEM.: 1950.0 ecliptic
+ASPECT EPOCH..: 2444786.5  (1981 Jul  1.0)
+ASPECT DATA...:  3.4463  2.4967   7.10 263.56  19.89
+EARTH POS-VEL.:   0.152744  -1.005153  -0.000023    0.016728  0.002525  0.000000
+OBJECT POS-VEL:  -0.110387  -3.338083   0.849664    0.008779  0.000502  0.000645
+OBSERVING TIME: 2444786.5      (1981 Jul  1)
+ZERO TIME.....:       0.0      (Julian zero)
+DATA:
+  2444786.67141     7.602 .015   1.5  .011  7.623 .043 80.5  .262
+  2444786.72636     7.589 .014   1.4  .003  7.568 .042-77.6 -.248
+  2444786.75144     7.543 .013   2.9  .001
+  2444786.79892     7.571 .013   2.4 -.004
+  2444786.84338     7.583 .014   1.2 -.007
+  2444786.86231     7.561 .014   1.4 -.011
+! 2444786.87870     7.520 .014   1.4 -.015  7.543 .018-22.2  .113
+  2444786.91656     7.557 .017   1.8 -.034
+================----------------------------------------------------------------
+REFERENCE.....: Harris et al. (1992)
+DETECTOR......: photoelectric
+AQUISITION....: Digital data from Alan Harris, converted by PM
+COLUMNS.......: #V.
+REDUCED MAG...: T
+LT CORRECTED..: T
+UNIT OF TIME..: 1.0 day
+OBJECT........:    57 Mnemosyne
+OBSERVING SITE: W117.68 +34.38  Table Mountain Observatory, California, USA
+ASPECT SYSTEM.: 1950.0 ecliptic
+ASPECT EPOCH..: 2444788.5  (1981 Jul  3.0)
+ASPECT DATA...:  3.4451  2.5031   7.47 263.19  19.87
+EARTH POS-VEL.:   0.186107  -0.999539  -0.000023    0.016632  0.003089  0.000000
+OBJECT POS-VEL:  -0.092828  -3.337032   0.850942    0.008780  0.000550  0.000633
+OBSERVING TIME: 2444788.5      (1981 Jul  3)
+ZERO TIME.....:       0.0      (Julian zero)
+DATA:
+! 2444788.66985     7.614 .014   1.8  .004
+! 2444788.75329     7.640 .013   2.2  .000
+================----------------------------------------------------------------
+REFERENCE.....: Harris et al. (1992)
+DETECTOR......: photoelectric
+AQUISITION....: Digital data from Alan Harris, converted by PM
+COLUMNS.......: #V.
+REDUCED MAG...: T
+LT CORRECTED..: T
+UNIT OF TIME..: 1.0 day
+OBJECT........:    57 Mnemosyne
+OBSERVING SITE: W117.68 +34.38  Table Mountain Observatory, California, USA
+ASPECT SYSTEM.: 1950.0 ecliptic
+ASPECT EPOCH..: 2444789.5  (1981 Jul  4.0)
+ASPECT DATA...:  3.4445  2.5067   7.67 263.01  19.86
+EARTH POS-VEL.:   0.202713  -0.996309  -0.000023    0.016578  0.003370  0.000000
+OBJECT POS-VEL:  -0.084047  -3.336470   0.851571    0.008781  0.000574  0.000626
+OBSERVING TIME: 2444789.5      (1981 Jul  4)
+ZERO TIME.....:       0.0      (Julian zero)
+DATA:
+  2444789.69085     7.651 .015   2.8  .004
+  2444789.78060     7.638 .014   2.4 -.002
+  2444789.83858     7.597 .015   1.8 -.002
+================----------------------------------------------------------------
+REFERENCE.....: Harris et al. (1992)
+DETECTOR......: photoelectric
+AQUISITION....: Digital data from Alan Harris, converted by PM
+COLUMNS.......: #V.
+REDUCED MAG...: T
+LT CORRECTED..: T
+UNIT OF TIME..: 1.0 day
+OBJECT........:    57 Mnemosyne
+OBSERVING SITE: W117.68 +34.38  Table Mountain Observatory, California, USA
+ASPECT SYSTEM.: 1950.0 ecliptic
+ASPECT EPOCH..: 2444791.5  (1981 Jul  6.0)
+ASPECT DATA...:  3.4432  2.5146   8.07 262.66  19.82
+EARTH POS-VEL.:   0.235748  -0.989009  -0.000023    0.016454  0.003929  0.000000
+OBJECT POS-VEL:  -0.066484  -3.335274   0.852812    0.008782  0.000622  0.000614
+OBSERVING TIME: 2444791.5      (1981 Jul  6)
+ZERO TIME.....:       0.0      (Julian zero)
+DATA:
+! 2444791.66880     7.657 .015   1.7 -.004
+  2444791.76380     7.667 .014   1.6  .000
+================----------------------------------------------------------------
+REFERENCE.....: Harris et al. (1992)
+DETECTOR......: photoelectric
+AQUISITION....: Digital data from Alan Harris, converted by PM
+COLUMNS.......: #V.
+REDUCED MAG...: T
+LT CORRECTED..: T
+UNIT OF TIME..: 1.0 day
+OBJECT........:    57 Mnemosyne
+OBSERVING SITE: W117.68 +34.38  Table Mountain Observatory, California, USA
+ASPECT SYSTEM.: 1950.0 ecliptic
+ASPECT EPOCH..: 2444793.5  (1981 Jul  8.0)
+ASPECT DATA...:  3.4420  2.5236   8.49 262.31  19.78
+EARTH POS-VEL.:   0.268517  -0.980595  -0.000023    0.016312  0.004484  0.000000
+OBJECT POS-VEL:  -0.048919  -3.333981   0.854028    0.008783  0.000671  0.000602
+OBSERVING TIME: 2444793.5      (1981 Jul  8)
+ZERO TIME.....:       0.0      (Julian zero)
+DATA:
+  2444793.67974     7.602 .014   1.5 -.007
+  2444793.72133     7.577 .013   1.4 -.002
+  2444793.73913     7.589 .013   1.4  .000
+  2444793.75698     7.604 .013   1.3  .001
+  2444793.80149     7.679 .013   2.0  .005  7.654 .017-62.8  .077
+  2444793.84609     7.684 .014   1.4  .013
+! 2444793.86181     7.649 .014   2.1  .013
+  2444793.88594     7.674 .015   2.0  .022
+  2444793.91606     7.664 .017   2.4  .037
+  2444793.93193     7.662 .018   2.2  .066  7.636 .020-20.5  .690
+================----------------------------------------------------------------
+REFERENCE.....: Harris et al. (1992)
+DETECTOR......: photoelectric
+AQUISITION....: Digital data from Alan Harris, converted by PM
+COLUMNS.......: #V.
+REDUCED MAG...: T
+LT CORRECTED..: T
+UNIT OF TIME..: 1.0 day
+OBJECT........:    57 Mnemosyne
+OBSERVING SITE: W117.68 +34.38  Table Mountain Observatory, California, USA
+ASPECT SYSTEM.: 1950.0 ecliptic
+ASPECT EPOCH..: 2444794.5  (1981 Jul  9.0)
+ASPECT DATA...:  3.4414  2.5284   8.70 262.15  19.75
+EARTH POS-VEL.:   0.284791  -0.975973  -0.000023    0.016234  0.004759  0.000000
+OBJECT POS-VEL:  -0.040136  -3.333298   0.854626    0.008783  0.000695  0.000595
+OBSERVING TIME: 2444794.5      (1981 Jul  9)
+ZERO TIME.....:       0.0      (Julian zero)
+DATA:
+  2444794.69015     7.607 .015   2.6 -.003
+  2444794.73117     7.595 .014   2.7  .000
+  2444794.75357     7.576 .014   2.3  .001
+  2444794.76781     7.608 .014   1.8  .003
+  2444794.77907     7.596 .014   2.0  .004
+  2444794.79071     7.603 .014   1.8  .006
+  2444794.80509     7.621 .014   1.9  .007
+================----------------------------------------------------------------
+END OF FILE
