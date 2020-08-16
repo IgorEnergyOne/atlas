@@ -1,22 +1,39 @@
-class ATL_File:
+import Observation
+
+class ATLFile:
     """docstring"""
 
-    def __init__(
-            self,
-            text=None,
-            observs_num=None
-    ):
+    def __init__(self,
+                 text=None,
+                 file_path=None,
+                 observations=None):
 
         """Constructor"""
-        if self.text is None:
-            self.text = {}
-        else:
-            self.text = text
+        self.text = text
+        self.file_path = file_path
+        self.observations = observations
 
-        if self.observs_num is None:
-            self.observs_num = 0
+    @property
+    def file_path(self):
+        return self._file_path
+
+    @file_path.setter
+    def file_path(self, value):
+        if value is None:
+            self._file_path = None
         else:
-            self.observs_num = observs_num
+            self._file_path = value
+
+    @property
+    def text(self):
+        return self._text
+
+    @text.setter
+    def text(self, value):
+        if value is None:
+            self._text = None
+        else:
+            self._text = value
 
     @property
     def observs_num(self):
@@ -24,15 +41,10 @@ class ATL_File:
 
     @observs_num.setter
     def observs_num(self, value):
-        self._observs_num = value
-
-    @property
-    def text(self):
-        return self.text
-
-    @text.setter
-    def text(self, value):
-        self._text = value
+        if value is None:
+            self._observs_num = 0
+        else:
+            self._observs_num = value
 
     def calc_observs_num(self):
         start = 0
@@ -43,3 +55,33 @@ class ATL_File:
                 return
             yield start
             start += len(key_substring)  # use start += 1 to find overlapping matches
+
+    def read_atl_file(self):
+        if self._file_path is None:
+            raise Exception("path to file is no specified!")
+        else:
+            with open('{}'.format(self.file_path), 'r') as file:
+                atl_text_full = file.readlines()
+            self.text = atl_text_full
+        return 0
+
+    def separate_observations(self):
+        if self._text is None:
+            self.read_atl_file()
+        else:
+            # finding separators indexes to split ATL
+            # into separate observations
+            sep = "====="
+            size = len(self._text)
+            sep_idxs = [sep_idx+1 for sep_idx, row in
+                        enumerate(self._text) if sep in row]
+            # print(sep_idxs)
+            # separating observations
+            observations = [self._text[i: j] for i, j
+                                 in zip([0] + sep_idxs, sep_idxs
+                                 + ([size] if sep_idxs[-1] != size else []))]
+
+            self.observations = [Observation.Observation(text=obs) for obs in observations]
+            # print([self._text[idx] for idx in idx_list])
+            # self.observations = self._text[0].split()
+        return 0

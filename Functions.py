@@ -6,7 +6,7 @@ from astropy.table import QTable, Table, vstack
 from astroquery.jplhorizons import Horizons
 from astropy.time import Time
 #from astroquery.mpc import MPC
-#from pprint import pprint
+from pprint import pprint
 from tqdm import tqdm_notebook, tqdm
 from decimal import *
 
@@ -25,6 +25,18 @@ def decimal_to_jd(dec_time: float) -> float:
     """transforms decimal time into fraction of jd"""
     frac_jd = float(dec_time) * 60 * 60 / 86400
     return frac_jd
+
+def init_obs_dict():
+    """"""
+    dict_path = 'observatories.dat'
+    obs_dict = {}
+    with open(dict_path, 'r') as file:
+        obs_file = file.readlines()[1:]
+    for obs_site in obs_file:
+        code, site = obs_site.strip('\n').split(maxsplit=1)
+        #print(code, site)
+        obs_dict.update({site: code})
+    return obs_dict
 
 
 def jpl_query_ephemerides(body, epochs, **kwargs):
@@ -77,9 +89,10 @@ def JPL_query_eph_to_db(body, epochs, **kwargs):
         location = kwargs['location']
     elif 'location' == 'NaN':
         location = '121'
-
     if 'columns' in kwargs:
         columns = kwargs['columns']
+    elif 'columns' not in kwargs:
+        columns = ['r', 'delta', 'alpha_true', 'PABLon', 'PABLat']
     # ===============================================
     start = 0
     end = len(epochs)
@@ -89,7 +102,7 @@ def JPL_query_eph_to_db(body, epochs, **kwargs):
         obj = Horizons(id="{}".format(body), location=location, epochs=epochs[i:i + step])
         chunk_ephemerides = obj.ephemerides()[columns]
         full_ephemerides = vstack([full_ephemerides, chunk_ephemerides])
-        full_ephemerides_pd = full_ephemerides.to_pandas()
+        full_ephemerides_pd = full_ephemerides.to_pandas().drop(columns='col0')
     pd.options.display.float_format = '{:,.5f}'.format
     #full_ephemerides_pd = full_ephemerides_pd.drop(
         #ßcolumns=['col0', 'H', 'G', 'solar_presence', 'targetname', 'datetime_str', 'datetime_jd', 'flags'])
