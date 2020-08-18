@@ -1,5 +1,6 @@
 import Observation
 
+
 class ATLFile:
     """docstring"""
 
@@ -35,17 +36,6 @@ class ATLFile:
         else:
             self._text = value
 
-    @property
-    def observs_num(self):
-        return self.observs_num
-
-    @observs_num.setter
-    def observs_num(self, value):
-        if value is None:
-            self._observs_num = 0
-        else:
-            self._observs_num = value
-
     def calc_observs_num(self):
         start = 0
         key_substring = 'OBJECT.....'
@@ -57,6 +47,7 @@ class ATLFile:
             start += len(key_substring)  # use start += 1 to find overlapping matches
 
     def read_atl_file(self):
+        """"""
         if self._file_path is None:
             raise Exception("path to file is no specified!")
         else:
@@ -66,6 +57,7 @@ class ATLFile:
         return 0
 
     def separate_observations(self):
+        """"""
         if self._text is None:
             self.read_atl_file()
         else:
@@ -73,15 +65,22 @@ class ATLFile:
             # into separate observations
             sep = "====="
             size = len(self._text)
-            sep_idxs = [sep_idx+1 for sep_idx, row in
+            sep_idxs = [sep_idx + 1 for sep_idx, row in
                         enumerate(self._text) if sep in row]
-            # print(sep_idxs)
             # separating observations
             observations = [self._text[i: j] for i, j
-                                 in zip([0] + sep_idxs, sep_idxs
-                                 + ([size] if sep_idxs[-1] != size else []))]
+                            in zip([0] + sep_idxs, sep_idxs
+                            + ([size] if sep_idxs[-1] != size else []))]
 
             self.observations = [Observation.Observation(text=obs) for obs in observations]
-            # print([self._text[idx] for idx in idx_list])
-            # self.observations = self._text[0].split()
+
+    def write_observations(self, path=None):
+        """"""
+        if path is None:
+            path = self._file_path[:-4] + '_modified' + self._file_path[-4:]
+        atl = ""
+        for obs in self.observations:
+            atl = atl + ' '.join(obs.text)
+        with open(path, 'w') as atl_file:
+            atl_file.writelines(atl)
         return 0

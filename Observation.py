@@ -1,8 +1,7 @@
-from pprint import pprint
-import pandas as pd
 import Functions as fn
 
 class Observation:
+    """"""
     # len of fields in a header
     len_field = 15
     """docstring"""
@@ -122,6 +121,7 @@ class Observation:
         return 0
 
     def read_obs_times(self):
+        """"""
         field_unit = "UNIT OF TIME"
         unit = self._header[field_unit]
         field_start = "ZERO TIME"
@@ -136,7 +136,7 @@ class Observation:
     def read_obs_data(self):
         sep = "DATA:"
         sep_idx = self.find_row_idx(self._text, sep)
-        self._obs_data = self._text[sep_idx+1:-1]
+        self._obs_data = self._text[sep_idx + 1:-1]
         return 0
 
     def find_row_idx(self, where: list, what: str) -> int:
@@ -145,10 +145,41 @@ class Observation:
                enumerate(where) if what in row][0]
         return idx
 
-    def make_query(self):
-        query_data = fn.JPL_query_eph_to_db(body=self.obs_obj,
-                                            location=self._obs_site,
-                                            epochs=self.read_obs_times()
-                                            )
+    def make_query(self, to_csv=False, **kwargs):
+        """"""
+        query_data = fn.jpl_query_eph(body=self.obs_obj,
+                                      location=self._obs_site,
+                                      epochs=self.read_obs_times(),
+                                      to_csv=to_csv,
+                                      **kwargs)
         self._query_data = query_data
+        new_columns = ' '.join(query_data.columns)
         return 0
+
+    def add_query_to_atl(self):
+        column_field = 'COLUMNS'
+        new_columns = ' '.join(self._query_data.columns)
+        field_idx = self.find_row_idx(where=self._text, what=column_field)
+        self._text[field_idx] = self._text[field_idx].strip('\n') + ' ' + new_columns + '\n'
+        # finding the end of header:
+        data_start_field = 'DATA:'
+        data_start_idx = self.find_row_idx(where=self._text, what=data_start_field)
+        for idx, row in enumerate(self._query_data.values.tolist()):
+            str_row = ' '.join(["{:.4f}".format(i) for i in row])
+            self._text[idx + data_start_idx+1] = self._obs_data[idx].strip('\n') + ' ' + str_row + '\n'
+        return 0
+
+    def obs_pipeline(self, to_csv=False):
+        self.read_header()
+        self.read_object()
+        self.read_obs_site()
+        self.read_obs_data()
+        self.read_obs_times()
+        self.make_query(to_csv=to_csv)
+        self.add_query_to_atl()
+        return 0
+
+    # def build_modified_obs(self):
+    #     modified_obs = self._header + self._obs_data
+
+
