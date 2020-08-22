@@ -1,5 +1,6 @@
 import Functions as fn
 
+
 class Observation:
     """"""
     # len of fields in a header
@@ -123,7 +124,6 @@ class Observation:
     def read_obs_times(self):
         """"""
         field_unit = "UNIT OF TIME"
-        unit = self._header[field_unit]
         field_start = "ZERO TIME"
         try:
             start = float(self._header[field_start])
@@ -139,7 +139,8 @@ class Observation:
         self._obs_data = self._text[sep_idx + 1:-1]
         return 0
 
-    def find_row_idx(self, where: list, what: str) -> int:
+    @staticmethod
+    def find_row_idx(where: list, what: str) -> int:
         """doctring"""
         idx = [idx for idx, row in
                enumerate(where) if what in row][0]
@@ -153,7 +154,6 @@ class Observation:
                                       to_csv=to_csv,
                                       **kwargs)
         self._query_data = query_data
-        new_columns = ' '.join(query_data.columns)
         return 0
 
     def add_query_to_atl(self):
@@ -178,8 +178,3 @@ class Observation:
         self.make_query(to_csv=to_csv)
         self.add_query_to_atl()
         return 0
-
-    # def build_modified_obs(self):
-    #     modified_obs = self._header + self._obs_data
-
-

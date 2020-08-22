@@ -28,7 +28,7 @@ def decimal_to_jd(dec_time: float) -> float:
 
 def init_obs_dict():
     """"""
-    dict_path = 'observatories.dat'
+    dict_path = 'data/observatories.dat'
     obs_dict = {}
     with open(dict_path, 'r') as file:
         obs_file = file.readlines()[1:]
@@ -194,7 +194,7 @@ def queryATL_add_eph(path, file_name):
     obs_sites_unique = obs_sites[0].unique()
     print(obs_sites_unique)
     # read observatories and their codes to dict from dat file
-    obs_data = read_observatories("", "observatories.dat")
+    obs_data = read_observatories("", "data/observatories.dat")
     # print(obs_sites_unique)
     obs_codes_kwd = {obs_sites_unique[i]:
                      obs_data.get(obs_sites_unique[i])
