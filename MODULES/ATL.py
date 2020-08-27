@@ -1,4 +1,4 @@
-import Observation
+from MODULES import Observation
 
 
 class ATLFile:

@@ -8,6 +8,7 @@ from astropy.time import Time
 #from astroquery.mpc import MPC
 from pprint import pprint
 from tqdm import tqdm_notebook, tqdm, trange
+from pathlib import Path
 from decimal import *
 
 pd.options.display.float_format = '{:,.4f}'.format
@@ -99,7 +100,7 @@ def jpl_query_eph(body, epochs, to_csv=False, **kwargs):
     full_ephemerides_pd = full_ephemerides.to_pandas().drop(columns="col0")
     pd.options.display.float_format = '{:,.4f}'.format
     if to_csv:
-        full_ephemerides_pd.to_csv('atlas_test_files/tests/{}.csv'.format(body),
+        full_ephemerides_pd.to_csv('test_files/tests/{}.csv'.format(body),
                                    mode='w', index=False, header=True, encoding='utf8', float_format='%.6f')
     full_ephemerides_pd = full_ephemerides_pd.round(5)
     return full_ephemerides_pd
@@ -194,7 +195,7 @@ def queryATL_add_eph(path, file_name):
     obs_sites_unique = obs_sites[0].unique()
     print(obs_sites_unique)
     # read observatories and their codes to dict from dat file
-    obs_data = read_observatories("", "data/observatories.dat")
+    obs_data = read_observatories("", "../data/observatories.dat")
     # print(obs_sites_unique)
     obs_codes_kwd = {obs_sites_unique[i]:
                      obs_data.get(obs_sites_unique[i])

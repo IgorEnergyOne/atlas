@@ -1,13 +1,10 @@
-import Functions as fn
 import os
-# os.path.join
-from pprint import pprint
-from tqdm import tqdm_notebook, tqdm, trange
-import ATL
-import Observation
+from tqdm import tqdm
+from MODULES import ATL
 
 if __name__ == "__main__":
-    path_to_files = 'atlas_test_files/'
+
+    path_to_files = 'test_files/'
     file = 'Z1685.ATL'
     file_2 = 'Z6391.ATL'
     file_path = os.path.join(path_to_files, file_2)
@@ -17,14 +14,12 @@ if __name__ == "__main__":
     atl_file = ATL.ATLFile(file_path=file_path)
     atl_file.read_atl_file()
     atl_file.separate_observations()
-    # observation = atl_file.observations[1]
-    # observation.obs_pipeline(to_csv=False)
     for obs_idx, observation in enumerate(tqdm(atl_file.observations[:-1])):
         observation.obs_pipeline(to_csv=False)
-        #pprint(observation.text)
         atl_file.observations[obs_idx].text = observation.text
 
     atl_file.write_observations()
+
     #pprint(atl_file.observations)
     #pprint(observation.text)
     '''
