@@ -1,6 +1,6 @@
 import os
 from tqdm import tqdm
-from MODULES import ATL
+from src.MODULES import ATL
 
 if __name__ == "__main__":
 

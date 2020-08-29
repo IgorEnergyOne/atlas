@@ -1,4 +1,4 @@
-from MODULES import Functions as fn
+from src.MODULES import Functions as fn
 
 
 class Observation:
@@ -91,7 +91,7 @@ class Observation:
             self._query_data = value
 
     def read_header(self):
-        """"""
+        """gets all the rows of the header from observation"""
         sep = "DATA:"
         sep_idx = self.find_row_idx(self._text, sep)
         header = self._text[:sep_idx]
@@ -104,7 +104,7 @@ class Observation:
         return 0
 
     def read_obs_site(self):
-        """"""
+        """get observing site"""
         field = "OBSERVING SITE"
         self._obs_site = self._header[field]
         obs_site_dict = fn.init_obs_dict()
@@ -116,7 +116,7 @@ class Observation:
         return 0
 
     def read_object(self):
-        """"""
+        """get the name of the object"""
         field = "OBJECT"
         self._obs_obj = self._header[field].split(maxsplit=1)[1]
         return 0
@@ -134,6 +134,7 @@ class Observation:
         return obs_times_jd_full
 
     def read_obs_data(self):
+        """"""
         sep = "DATA:"
         sep_idx = self.find_row_idx(self._text, sep)
         self._obs_data = self._text[sep_idx + 1:-1]
@@ -157,6 +158,7 @@ class Observation:
         return 0
 
     def add_query_to_atl(self):
+        """"""
         column_field = 'COLUMNS'
         new_columns = ' '.join(self._query_data.columns)
         field_idx = self.find_row_idx(where=self._text, what=column_field)
@@ -170,6 +172,7 @@ class Observation:
         return 0
 
     def obs_pipeline(self, to_csv=False):
+        """"""
         self.read_header()
         self.read_object()
         self.read_obs_site()

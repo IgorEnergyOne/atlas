@@ -1,4 +1,4 @@
-from MODULES import Observation
+from src.MODULES import Observation
 
 
 class ATLFile:
@@ -37,6 +37,7 @@ class ATLFile:
             self._text = value
 
     def calc_observs_num(self):
+        """"""
         start = 0
         key_substring = 'OBJECT.....'
         while True:
@@ -47,9 +48,9 @@ class ATLFile:
             start += len(key_substring)  # use start += 1 to find overlapping matches
 
     def read_atl_file(self):
-        """"""
+        """reads atl file into the text property by the provided path"""
         if self._file_path is None:
-            raise Exception("path to file is no specified!")
+            raise Exception("path to file is not specified!")
         else:
             with open('{}'.format(self.file_path), 'r') as file:
                 atl_text_full = file.readlines()
@@ -57,7 +58,7 @@ class ATLFile:
         return 0
 
     def separate_observations(self):
-        """"""
+        """splits atl file into separate observations"""
         if self._text is None:
             self.read_atl_file()
         else:
@@ -75,7 +76,7 @@ class ATLFile:
             self.observations = [Observation.Observation(text=obs) for obs in observations]
 
     def write_observations(self, path=None):
-        """"""
+        """write observations into separate files"""
         if path is None:
             path = self._file_path[:-4] + '_modified' + self._file_path[-4:]
         atl = ""

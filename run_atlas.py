@@ -1,16 +1,15 @@
-#! /usr/bin/python3
+#!/usr/bin/env python
 
 """ run_atlas - wrapper for automated work with .atl files
-    v0.1: 2020-08-26, igorenegyone@gmail.com
 """
 
-import os
 import argparse
 from tqdm import tqdm
-from MODULES import ATL
+from src.MODULES import ATL
 
 
 def run_atlas(filename, to_csv=False):
+    """"""
     atl_file = ATL.ATLFile(file_path=filename)
     atl_file.read_atl_file()
     atl_file.separate_observations()
