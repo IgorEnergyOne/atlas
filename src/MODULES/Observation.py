@@ -103,22 +103,33 @@ class Observation:
         self._header = header_dict
         return 0
 
+    @staticmethod
+    def read_code_parenthesis(obs_string):
+        """"""
+        obs_code = obs_string.rsplit(maxsplit=1)[1].strip("().{}|'\|/")
+        return obs_code
+
     def read_obs_site(self):
         """get observing site"""
         field = "OBSERVING SITE"
-        self._obs_site = self._header[field]
+        obs_site = self._header[field]
         obs_site_dict = fn.init_obs_dict()
-        obs_code = obs_site_dict.get(self._obs_site)
-        if obs_code is not None:
-            self._obs_site = obs_code
+        obs_code = obs_site_dict.get(obs_site)
+        if obs_code is None:
+            obs_code = self.read_code_parenthesis(obs_site)
+            if fn.is_obscode_valid(obs_code):
+                self._obs_site = obs_code
+            else:
+                self._obs_site = input("Enter observatory code for {} \n".format(self._obs_site))
         else:
-            self._obs_site = input("Enter observatory code for {} \n".format(self._obs_site))
+            self._obs_site = obs_code
         return 0
 
     def read_object(self):
         """get the name of the object"""
         field = "OBJECT"
-        self._obs_obj = self._header[field].split(maxsplit=1)[1]
+        self._obs_obj = fn.parse_ast_name(self._header[field])
+        # print(self._obs_obj)
         return 0
 
     def read_obs_times(self):
@@ -149,12 +160,30 @@ class Observation:
 
     def make_query(self, to_csv=False, **kwargs):
         """"""
-        query_data = fn.jpl_query_eph(body=self.obs_obj,
-                                      location=self._obs_site,
-                                      epochs=self.read_obs_times(),
-                                      to_csv=to_csv,
-                                      **kwargs)
-        self._query_data = query_data
+        for id in reversed(self.obs_obj):
+            if id is not None:
+                query_data = fn.jpl_query_eph(body=id,
+                                              location=self._obs_site,
+                                              epochs=self.read_obs_times(),
+                                              to_csv=to_csv,
+                                              **kwargs)
+                self._query_data = query_data
+                break
+            else:
+                continue
+        return 0
+
+    def calc_mean_aspect_data(self):
+        """calculates mean values for the aspect data
+        using queried HORIZON data and writes it to ATL file
+        """
+        column_field = 'ASPECT DATA'
+        print(self._query_data)
+        median_vals = self._query_data.mean().values
+        new_asp_data = ' '.join(["{:.4f}".format(val) for val in median_vals])
+        new_asp_data += " (PABLon  PABLat)"
+        field_idx = self.find_row_idx(where=self._text, what=column_field)
+        self._text[field_idx] = fn.modify_string("ASPECT DATA...:", new_asp_data)
         return 0
 
     def add_query_to_atl(self):
@@ -172,12 +201,15 @@ class Observation:
         return 0
 
     def obs_pipeline(self, to_csv=False):
-        """"""
+        """pipeline to make all procedures with atl file"""
         self.read_header()
         self.read_object()
         self.read_obs_site()
         self.read_obs_data()
         self.read_obs_times()
         self.make_query(to_csv=to_csv)
+        self.calc_mean_aspect_data()
         self.add_query_to_atl()
         return 0
+
+

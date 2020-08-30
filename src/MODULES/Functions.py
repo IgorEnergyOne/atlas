@@ -1,7 +1,7 @@
-import pandas as pd
+import re
 from astropy.table import vstack
 from astroquery.jplhorizons import Horizons
-from tqdm import tqdm
+import pandas as pd
 
 pd.options.display.float_format = '{:,.4f}'.format
 
@@ -25,7 +25,7 @@ def init_obs_dict():
     initialize dictionary of observing_sites
     from observatories.dat file
     """
-    dict_path = 'data/observatories.dat'
+    dict_path = 'src/data/observatories.dat'
     obs_dict = {}
     with open(dict_path, 'r') as file:
         obs_file = file.readlines()[1:]
@@ -103,7 +103,7 @@ def jpl_query_eph(body, epochs, to_csv=False, **kwargs):
     return full_ephemerides_pd
 
 
-def get_orbital_elem(body, epochs, **kwargs):
+def get_orbital_elem(body, epochs, jd_dates, **kwargs):
     """"""
     if 'location' in kwargs:
         location = kwargs['location']
@@ -133,3 +133,68 @@ def read_observatories(path, file_name):
             value, key = line.rstrip().split('    ')
             obs_disc[key] = value
     return obs_disc
+
+
+def read_mpc_codes(mpc_file):
+    """"""
+    with open(mpc_file, 'r') as file:
+        mpc_file = file.readlines()
+    codes = [line.split(maxsplit=1)[0] for line in mpc_file[1:]]
+    return codes
+
+
+def is_obscode_valid(obs_code: str) -> bool:
+    """"""
+    mpc_codes_path = 'src/data/observatories_mpc.dat'
+    obs_code = str(obs_code)
+    code_length = len(obs_code)
+    if code_length != 3:
+        is_valid = False
+        return is_valid
+    mpc_codes = read_mpc_codes(mpc_codes_path)
+    if obs_code in mpc_codes:
+        is_valid = True
+    else:
+        is_valid = False
+    return is_valid
+
+
+def read_code_parenthesis(obs_string):
+    """"""
+    obs_code = obs_string.rsplit(maxsplit=1)[1].strip("().{}|'\|/")
+    return obs_code
+
+
+def parse_ast_name(name_str):
+    """parses asteroids namestring, splits into
+    separate id's of the asteroid
+    return number, name, and provisional name of an asteroid
+    """
+    prov_name = None  # provisional name (e.g. 2019 GG26)
+    desg_num = None  # asteroid's number (e.g. 66391)
+    name = None  # proper name (e.g. Justitia)
+
+    name_stripped = re.sub('[() ?.!/;:]', ' ', name_str)
+    namesplit = name_stripped.split()
+    for npart in namesplit:
+        try:
+            # check if number
+            npart_num = int(npart)
+            # check part of prov_name
+            if 1900 < npart_num < 2030:
+                prov_name = str(npart_num)
+            else:
+                desg_num = npart_num
+        # if not a number, than string
+        except ValueError:
+            # check if name
+            if len(npart) > 4:
+                name = npart
+            # check if part of prov number
+            contains_digit = any(map(str.isdigit, npart))
+            if len(npart) <= 4 and contains_digit:
+                prov_name += " " + npart
+    return desg_num, name, prov_name
+
+
+

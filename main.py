@@ -4,10 +4,11 @@ from src.MODULES import ATL
 
 if __name__ == "__main__":
 
-    path_to_files = 'test_files/'
+    path_to_files = 'atlas_test_files/'
     file = 'Z1685.ATL'
     file_2 = 'Z6391.ATL'
-    file_path = os.path.join(path_to_files, file_2)
+    file_3 = 'Z2019.ATL'
+    file_path = os.path.join(path_to_files, file)
 
     print("path_to_file :", file_path)
 
@@ -20,8 +21,6 @@ if __name__ == "__main__":
 
     atl_file.write_observations()
 
-    #pprint(atl_file.observations)
-    #pprint(observation.text)
     '''
     observation.read_header()
     observation.read_object()
@@ -34,5 +33,3 @@ if __name__ == "__main__":
     observation.add_query_to_atl()
     pprint(observation.text)
     '''
-    # func.queryATL_add_eph(path=path_to_files, file_name="Z6391.ATL")
-    # result = func.queryATL_to_csv(path="../../Desktop/2020-FB7_2020-03-31_Blagoveschensk/", file_name="Z0001.ATL")

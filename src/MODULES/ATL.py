@@ -81,7 +81,7 @@ class ATLFile:
             path = self._file_path[:-4] + '_modified' + self._file_path[-4:]
         atl = ""
         for obs in self.observations:
-            atl = atl + ' '.join(obs.text)
+            atl = atl + ''.join(obs.text)
         with open(path, 'w') as atl_file:
             atl_file.writelines(atl)
         return 0
