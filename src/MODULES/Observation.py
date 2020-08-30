@@ -178,7 +178,6 @@ class Observation:
         using queried HORIZON data and writes it to ATL file
         """
         column_field = 'ASPECT DATA'
-        print(self._query_data)
         median_vals = self._query_data.mean().values
         new_asp_data = ' '.join(["{:.4f}".format(val) for val in median_vals])
         new_asp_data += " (PABLon  PABLat)"
